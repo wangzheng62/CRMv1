@@ -1,0 +1,10 @@
+
+{% extends 'index.html' %}
+{% import 'listmacro.html'as list %}
+{# #}
+{% block title %}用户主页{%endblock%}
+{% block pagearea %}
+    {% if data -%}
+        {{ list.table(data) }}
+    {%- endif %}
+{%endblock%}

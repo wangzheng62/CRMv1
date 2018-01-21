@@ -1,0 +1,29 @@
+
+{% extends 'index.html' %}
+{% import 'formmacro.html'as forms %}
+{% import 'listmacro.html'as list %}
+{# #}
+{% block title %}用户主页{%endblock%}
+{% block right -%}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+        <script>alert("{{ message }}")</script>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+{%- endblock %}
+{% block pagearea %}
+    {% if formdata -%}
+    {{forms.search(formdata)}}
+    {%- endif %}
+    <p>
+    {% if listdata -%}
+        {{ list.table(listdata) }}
+    {%- endif %}
+    {% if messages %}
+    {% for message in messages %}
+        <script>alert("{{ message }}")</script>
+    {% endfor %}
+  {% endif %}
+{%endblock%}

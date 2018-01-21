@@ -1,0 +1,10 @@
+
+{% extends 'index.html' %}
+{% import 'echartsmacro.html'as echarts %}
+{# #}
+{% block title %}用户主页{%endblock%}
+
+{% block pagearea %}
+        {{ echarts.echarts(container="cont",name="销量",type="bar",data=[5, 20, 36, 10, 10, 20]) }}
+    {{ echarts.echarts(container="cont1",name="销量",type="bar",data=[5, 20, 36, 10, 10, 20]) }}
+{%endblock%}
