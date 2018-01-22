@@ -186,14 +186,14 @@ class MysqlTable(MysqlTableBase):
             return self.getdata(__SQL)
 
     def save(self):
-        __COLNAME='('
-        __VALUES='('
+        __COLNAME='( '
+        __VALUES='( '
         for key in self.info:
-            if self.info[key][0]=='':
+            if self.info[key]=='':
                 pass
             else:
                 __COLNAME=__COLNAME+key+','
-                __VALUES=__VALUES+'\''+self.info[key][0]+'\''+','
+                __VALUES=__VALUES+'\''+self.info[key]+'\''+','
         __COLNAME=__COLNAME[:-1]+')'
         __VALUES=__VALUES[:-1]+')'
         __SQL=self.insert(TABLES=self.table_name,COLNAMES=__COLNAME,VALUES=__VALUES)
