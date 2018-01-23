@@ -1,4 +1,4 @@
-from test__mysqlmetaclass import Mysqlserver,MysqlDB,MysqlTable
+from test__mysqlmetaclass import Mysqlserver, MysqlDB, MysqlTable
 
 
 class DBserver(Mysqlserver):
@@ -10,17 +10,35 @@ class Crm(MysqlDB, DBserver):
 
 
 class Employee(MysqlTable, Crm):
-	def is_authenticated(self):
-		return True
-	def is_active(self):
-		return True
-	def is_anonymous(self):
-		return False
-	def get_id(self):
-		return self.search()
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return self.search()
+
+
 class Orderlist(MysqlTable, Crm):
-    pass
+    @classmethod
+    def kw_fetchall(cls):
+        __SQL = cls.select(DISTINCT='distinct', COLNAMES='order_Id', TABLES=cls.table_name)
+        print(__SQL)
+        res = cls.getdata(__SQL)
+        print(res)
+
+
 class Product(MysqlTable, Crm):
     pass
+
+
 class Customer(MysqlTable, Crm):
     pass
+
+
+if __name__ == '__main__':
+    Orderlist.kw_fetchall()

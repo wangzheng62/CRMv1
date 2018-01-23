@@ -6,8 +6,11 @@ create table employee(
 	auth tinyint not null default 1,
 	department varchar(10),
 	employee_position varchar(10),
-	thestatus varchar(10),
-	remarks varchar(10),
+	employee_status varchar(10),
+	remarks varchar(200),
+	user_id varchar(20) unique,
+	user_pw varchar(20),
+	user_status varchar(10),
 	__insert_time timestamp not null default current_timestamp,
 	__update_time timestamp not null on update current_timestamp default current_timestamp
 	);
@@ -17,10 +20,10 @@ create table customer(
 	phone varchar(20) unique not null,
 	company varchar(10),
 	address varchar(10),
-	qq int,
+	qq varchar(20) unique,
 	wechar varchar(10),
 	thestatus varchar(10),
-	remarks varchar(10),
+	remarks varchar(200),
 	__employee_Id int not null,
 	__insert_time timestamp not null default current_timestamp,
 	__update_time timestamp not null on update current_timestamp default current_timestamp
@@ -31,7 +34,7 @@ create table product(
 	model varchar(10) not null,
 	num int not null,
 	price int not null,
-	remarks varchar(10),
+	remarks varchar(200),
 	__insert_time timestamp not null default current_timestamp,
 	__update_time timestamp not null on update current_timestamp default current_timestamp
 	);
@@ -41,7 +44,7 @@ create table orderlist(
 	order_key varchar(10) not null,
 	order_value varchar(10) not null,
 	key_num int not null,
-	remarks varchar(10),
+	remarks varchar(200),
 	__insert_time timestamp not null default current_timestamp,
 	__update_time timestamp not null on update current_timestamp default current_timestamp
 	);
