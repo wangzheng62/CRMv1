@@ -1,4 +1,4 @@
-from test__mysqlmetaclass import Mysqlserver, MysqlDB, MysqlTable
+from test__mysqlmetaclass import Mysqlserver,MysqlDB,MysqlTable
 
 
 class DBserver(Mysqlserver):
@@ -11,15 +11,9 @@ class Crm(MysqlDB, DBserver):
 
 class Employee(MysqlTable, Crm):
     pass
-
-
 class Orderlist(MysqlTable, Crm):
     pass
-
-
 class Product(MysqlTable, Crm):
     pass
-
-
 class Customer(MysqlTable, Crm):
     pass

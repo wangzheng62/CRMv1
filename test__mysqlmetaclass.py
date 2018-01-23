@@ -1,21 +1,11 @@
 import CONFIG
-import logging
 import mysql.connector
 
 
 # 元类
 class Mysqlservermetaclass(type):
     def __new__(mcs, name, bases, attrs):
-        try:
-            from CONFIG import MYSQLDBSERVER
-            conn = mysql.connector.connect(**MYSQLDBSERVER)
-            attrs['DBSERVER'] = MYSQLDBSERVER
-            logging.basicConfig(filename=CONFIG.INFOLOG, level=logging.INFO)
-            logging.info('数据库服务器测试连接成功')
-        except Exception as e:
-            logging.basicConfig(filename=CONFIG.ERRORLOG, level=logging.INFO)
-            logging.error('数据库服务器测试连接失败')
-            logging.error(e)
+        attrs['DBSERVER'] = CONFIG.MYSQLDBSERVER
         return type.__new__(mcs, name, bases, attrs)
 
 
