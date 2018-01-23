@@ -1,29 +1,43 @@
 from flask import Flask, redirect, url_for, render_template, request, flash
 from func import DBserver, Crm, Product, Orderlist, Employee, Customer
+from flask_login import LoginManager, login_user, login_required, logout_user
 
 app = Flask(__name__)
 app.secret_key = 'some_secret'
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    print(user_id)
+    return Employee(user_Id=user_id)
+
 
 @app.route('/')
 def root():
     return render_template('login.html')
-@app.route('/login',methods=['get','post'])
+
+
+@app.route('/login', methods=['get', 'post'])
 def login():
-    name=request.form['name']
-    pw= request.form['pw']
-    print(name,pw)
-    e=Employee(employee_name=name)
-    if e.count()== 0 or pw!='123':
+    kw = request.form.to_dict()
+    e = Employee(user_Id=kw['name'])
+    print(e.count())
+    print(e.search()[0][9])
+    if e.count() == 1 and kw['pw']==e.search()[0][9]:
+        print('1')
+        login_user(e)
+        flash('登陆成功')
+        return redirect(url_for('index'))
+    else:
         print('1')
         flash('账户或密码不对')
         return render_template('login.html')
-    else:
-        print('1')
-        flash('登陆成功')
-        return redirect(url_for('index'))
 
 
 @app.route('/index')
+@login_required
 def index():
     return render_template('index.html')
 
@@ -46,6 +60,7 @@ def prouductmain():
 @app.route('/employeemain')
 def employeemain():
     return render_template('employeemain.html')
+
 
 # 客户页
 @app.route('/customernow')
@@ -96,6 +111,7 @@ def addcustomer():
 @app.route('/analyzecustomer', methods=["get", "post"])
 def analyzecustomer():
     return render_template('customermain.html', welcome="本功能尚未开放")
+
 
 # 产品页
 @app.route('/productnow')
@@ -248,8 +264,6 @@ def addemployee():
 @app.route('/analyzeemployee', methods=["get", "post"])
 def analyzeemployee():
     return render_template('employeemain.html', welcome="本功能尚未开放")
-
-
 
 
 if __name__ == '__main__':

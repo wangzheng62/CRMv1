@@ -161,10 +161,10 @@ class MysqlTable(MysqlTableBase):
     def search(self, NUM=0):
         __condition = 'where'
         for key in self.info:
-            if self.info[key][0]=='':
+            if self.info[key]=='':
                 pass
             else:
-                __condition = __condition + ' {}=\'{}\' and'.format(key, self.info[key][0])
+                __condition = __condition + ' {}=\'{}\' and'.format(key, self.info[key])
         if len(__condition)<=6:
             return []
         else:
