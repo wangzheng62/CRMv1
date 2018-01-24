@@ -1,6 +1,8 @@
-function aee() {
-    $('#addproduct_button').before('<button>3333</button>')
 
+function aee() {
+    $.get("test01",function(e){
+        $('#addproduct_button').before(e)
+  });
 }
 $(document).ready(function () {
     $('#addproduct_button').click(aee);

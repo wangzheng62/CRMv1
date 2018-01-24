@@ -21,12 +21,20 @@
 </nav>
 	<div id="left" class="col-lg-2 col-md-2 col-sm-2">{% block left %}{% endblock %}</div>
 	<div id="pagearea" class="col-lg-8 col-md-8 col-sm-8">
-    <form action="/login" method="post">
-                        <span>请输入账号</span>
-                        <input type="text" name="name"  placeholder="name">
-                        <span>请输入密码</span>
-                        <input type="password" name="pw" placeholder="password">
-                        <button id="addproduct_button" type="button" class="btn btn-default">添加产品</button>
+    <form action="#" method="post">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+        </div>
+
+        <div>
+            <datalist id="test_list">
+                <option value="3650M5"></option>
+                <option value="内存"></option>
+                <option value="CPU"></option>
+                <option value="硬盘"></option>
+            </datalist>
+            <button type="button" id="addproduct_button"  class="btn btn-default" >添加产品</button></div>
                         <input type="submit" name="submit">
                          </form>
         {% if welcome -%}

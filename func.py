@@ -39,6 +39,11 @@ class Product(MysqlTable, Crm):
 class Customer(MysqlTable, Crm):
     pass
 
+e='''
+      
+        <input type="text" class="form-control" size="8" list="test_list" value="产品">
+      <input type="text" class="form-control" aria-label="...">
 
+            '''
 if __name__ == '__main__':
     Orderlist.kw_fetchall()
