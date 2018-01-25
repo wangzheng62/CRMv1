@@ -40,9 +40,9 @@ class Customer(MysqlTable, Crm):
     pass
 
 e='''
-      
-        <input type="text" class="form-control" size="8" list="test_list" value="产品">
-      <input type="text" class="form-control" aria-label="...">
+      <div class="col-sm-2">
+        <input type="text" class="form-control" list="test_list"><input type="number" class="form-control" aria-label="...">
+      </div>
 
             '''
 if __name__ == '__main__':

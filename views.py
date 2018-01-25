@@ -16,7 +16,8 @@ def test01():
     if request.method =='GET':
         return func.e
     elif request.method =='POST':
-        return 'post'
+        print(request.data)
+        return 'test_list'
     else:
         return 'lalal'
 @login_manager.user_loader
