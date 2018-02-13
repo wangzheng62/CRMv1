@@ -1,7 +1,7 @@
 from flask import Flask, redirect, url_for, render_template, request, flash
 from func import DBserver, Crm, Product, Orderlist, Employee, Customer
 from flask_login import LoginManager, login_user, login_required, logout_user
-
+import func,time
 app = Flask(__name__)
 app.secret_key = 'some_secret'
 login_manager = LoginManager()
@@ -10,7 +10,16 @@ login_manager.init_app(app)
 @app.route("/test")
 def test():
     return render_template('test.html')
-
+@app.route("/test01",methods=['GET','POST'])
+def test01():
+    print(request.method)
+    if request.method =='GET':
+        return func.e
+    elif request.method =='POST':
+        print(request.data)
+        return 'test_list'
+    else:
+        return 'lalal'
 @login_manager.user_loader
 def load_user(user_id):
     print(user_id)
