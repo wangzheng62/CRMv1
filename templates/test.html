@@ -1,49 +1,23 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}{% endblock %}</title>
-	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
-	<script src="/static/js/jquery-3.2.1.js"></script>
-	<script src="/static/js/bootstrap.js"></script>
-    <script src="/static/js/echarts.js"></script>
-    <script src="/static/js/test.js"></script>
-	{% block link%}{% endblock %}
-	{% block script%}{% endblock %}
-</head>
-<body>
-<nav id="top" class="navbar navbar-inverse">
-    <div class="container-fluid">
-    <div class="navbar-header">
-        {% block top %}{% endblock %}
-    </div>
-    </div>
-</nav>
-	<div id="left" class="col-lg-2 col-md-2 col-sm-2">{% block left %}{% endblock %}</div>
-	<div id="pagearea" class="col-lg-8 col-md-8 col-sm-8">
-    <form action="/login" method="post">
-                        <span>请输入账号</span>
-                        <input type="text" name="name"  placeholder="name">
-                        <span>请输入密码</span>
-                        <input type="password" name="pw" placeholder="password">
-                        <button id="addproduct_button" type="button" class="btn btn-default">添加产品</button>
-                        <input type="submit" name="submit">
-                         </form>
-        {% if welcome -%}
-            {{ welcome }}
-        {%- endif %}
-        {% block pagearea %}{% endblock %}
-    </div>
-	<div id="right" class="col-lg-2 col-md-2 col-sm-2">
-        {% block right %}{% endblock %}
-    {% with messages = get_flashed_messages() %}
-         {% if messages %}
-            {% for message in messages %}
-                <script>alert("{{ message }}")</script>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-    </div>
 
-</body>
-</html>
+{% extends 'index.html' %}
+{% import 'formmacro.html'as forms %}
+{% import 'listmacro.html'as lists %}
+{% block title %}测试页{%endblock%}
+{% block left -%}
+
+{%- endblock %}
+{% block pagearea -%}
+    <table class="table table-hover">
+        <tr>
+                <th>product_Id</th><th>product_name</th><th>model</th><th>num</th><th>price</th><th>remarks</th><th>__insert_time</th><th>__update_time</th>
+                </tr>
+
+            <tr>
+            <td>1</td><td>3650M5</td><td>2620</td><td>1</td><td>15000</td><td>None</td><td>2018-01-22 14:25:40</td><td>2018-01-22 14:25:40</td>
+            </tr>
+            <tr>
+            <td>2</td><td>3650M5</td><td>2630</td><td>1</td><td>16000</td><td>None</td><td>2018-01-22 14:30:33</td><td>2018-01-22 14:30:33</td>
+            </tr>
+    </table>
+
+{%- endblock %}

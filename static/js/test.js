@@ -1,8 +1,8 @@
-function aee() {
-    $('#addproduct_button').before('<button>3333</button>')
-
+function f1(event) {
+    var t=$(event.target.parentNode)
+ alert(t.children().first().text())
 }
 $(document).ready(function () {
-    $('#addproduct_button').click(aee);
-
+    $("tr").click(f1);
+    
 })
