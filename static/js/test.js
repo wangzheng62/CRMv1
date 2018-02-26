@@ -5,7 +5,7 @@ function f1(event) {
 function f2() {
     var t=$(event.target).text();
     var n=$(event.target).attr("name");
-    str=" "+"<input type='text' name='"+n+"' class='form-text' placeholder="+t+">";
+    str=" "+"<input type='text' name="+n+"class='form-text' placeholder="+t+">";
     $("#fliter").append(str);
 
 
