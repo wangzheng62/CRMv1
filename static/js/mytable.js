@@ -37,7 +37,7 @@ function page(event) {
 
 }
 function selectall() {
-    $("tr:gt(0)").toggleClass('info');
+    $("td:visible").parent().toggleClass('info');
     
 }
 $(document).ready(function () {

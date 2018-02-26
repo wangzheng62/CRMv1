@@ -35,6 +35,7 @@
         {% elif loop.index%dict.step==1 and loop.index!=1 -%}
             <table class="table table-condensed invisible">
         <tr>
+            <th><input type="checkbox"/></th>
             {% for col in dict.colnames -%}
                 <th>{{col}}</th>
             {%- endfor %}
@@ -46,7 +47,7 @@
                 <td>{{td}}</td>
             {%- endfor %}
         </tr>
-        {% if (loop.index%dict.step==1 and not loop.first) or loop.last -%}
+        {% if ((loop.index+1)%dict.step==1 and not loop.first) or loop.last -%}
         </table>
         {%- endif %}
     {%- endfor %}
