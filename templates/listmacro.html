@@ -13,7 +13,7 @@
     {# 分页 #}
         <ul class="pagination pagination-sm floatright">
             <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-            {% for num in range(1,dict.pages+1) -%}
+            {% for num in range(1,dict.pages + 1) -%}
                 {% if loop.first -%}
                     <li class="active"><a>{{num}}</a></li>
                 {% else -%}
@@ -27,7 +27,7 @@
         {% if loop.index == 1 -%}
         <table class="table table-condensed">
         <tr>
-            <th><input type="checkbox"></input></th>
+            <th><input type="checkbox"/></th>
             {% for col in dict.colnames -%}
                 <th name="{{col}}">{{col}}</th>
             {%- endfor %}
