@@ -8,7 +8,7 @@
 {%- endblock %}
 {% block pagearea -%}
 {# 功能框 #}
-    <form id="fliter" class="floatleft" action="fliter()"><input type="submit" class="btn btn-primary btn-sm" value="过滤"></input></form>
+    <form id="fliter" class="floatleft" action="fliter"><input type="submit" class="btn btn-primary btn-sm" value="过滤"></input></form>
     {% if testdict -%}
         {{lists.table(testdict)}}
 	{%- endif %}
