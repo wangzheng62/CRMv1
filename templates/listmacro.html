@@ -1,21 +1,54 @@
-{# 表格模板 data为带列名的列表[('列名'),(),()] #}
-{% macro table(data) -%}
-    <div id="fliter"><button class="btn btn-primary">过滤项:</button></div>
-    <table class="table">
-        {% for tr in data -%}
-            {% if loop.first -%}
-                <tr>
-                {% for th in tr -%}
-                    <th>{{ th }}</th>
-                {%- endfor %}
-                </tr>
-            {% else %}
-            <tr>
-            {% for td in tr -%}
-                <td>{{ td }}</td>
-                {%- endfor  %}
-            </tr>
-            {%- endif %}
-        {%- endfor %}
-    </table>
+
+{#  dict{
+        "name":'',
+        "colnames":[],
+        "step":0,
+        "pages":0,
+        "data":[(),()]
+        }
+#}
+{% macro table(dict) -%}
+    <link rel="stylesheet" type="text/css" href="/static/css/test.css" />
+    <script src="/static/js/test.js"></script>
+    {# 分页 #}
+        <ul class="pagination pagination-sm floatright">
+            <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+            {% for num in range(1,dict.pages+1) -%}
+                {% if loop.first -%}
+                    <li class="active"><a>{{num}}</a></li>
+                {% else -%}
+                    <li><a>{{num}}</a></li>
+                {%- endif %}
+            {%- endfor %}
+            <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+        </ul>
+    {# 数据表 #}
+    {% for row in dict.data -%}
+        {% if loop.index == 1 -%}
+        <table class="table table-condensed">
+        <tr>
+            <th><input type="checkbox"></input></th>
+            {% for col in dict.colnames -%}
+                <th name="{{col}}">{{col}}</th>
+            {%- endfor %}
+        </tr>
+        {% elif loop.index%dict.step==1 and loop.index!=1 -%}
+            <table class="table table-condensed invisible">
+        <tr>
+            {% for col in dict.colnames -%}
+                <th>{{col}}</th>
+            {%- endfor %}
+        </tr>
+        {%- endif %}
+        <tr>
+            <td>{{loop.index}}</td>
+            {% for td in row -%}
+                <td>{{td}}</td>
+            {%- endfor %}
+        </tr>
+        {% if (loop.index%dict.step==1 and not loop.first) or loop.last -%}
+        </table>
+        {%- endif %}
+    {%- endfor %}
+
 {%- endmacro %}

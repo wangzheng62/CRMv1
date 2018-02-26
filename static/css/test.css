@@ -14,7 +14,12 @@
        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
-.selected{
-    background:#2aabd2;
+.invisible{
     display: none;
+}
+.floatright{
+    float: right;
+}
+.floatleft{
+    float: left;
 }

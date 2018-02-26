@@ -9,7 +9,19 @@ login_manager.init_app(app)
 
 @app.route("/test")
 def test():
-    return render_template('test.html')
+    res = Product.fetchall()
+    testdict={
+        "name":'ddd',
+        "colnames":Product.colnames(),
+        "step":2,
+        "data":res,
+        }
+    if len(res)%testdict["step"]==0:
+        testdict["pages"]=int(len(res)/testdict["step"])
+    else:
+        testdict["pages"] = int(len(res)/testdict["step"])+1
+    print(len(res))
+    return render_template('test.html',testdict=testdict)
 @app.route("/test01",methods=['GET','POST'])
 def test01():
     print(request.method)
@@ -275,6 +287,12 @@ def addemployee():
 
 @app.route('/analyzeemployee', methods=["get", "post"])
 def analyzeemployee():
+    return render_template('employeemain.html', welcome="本功能尚未开放")
+
+@app.route('/fliter', methods=["get", "post"])
+def fliter():
+    d=request.args.to_dict()
+    print(d)
     return render_template('employeemain.html', welcome="本功能尚未开放")
 
 
