@@ -7,26 +7,41 @@ app.secret_key = 'some_secret'
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-@app.route("/test")
+@app.route("/test",methods=['GET','POST'])
 def test():
-    res = Product.fetchall()
-    testdict={
+    if request.method =='GET':
+        res = Product.fetchall()
+        testdict={
         "name":'ddd',
         "colnames":Product.colnames(),
         "step":2,
         "data":res,
         }
-    if len(res)%testdict["step"]==0:
-        testdict["pages"]=int(len(res)/testdict["step"])
+        if len(res)%testdict["step"]==0:
+            testdict["pages"]=int(len(res)/testdict["step"])
+        else:
+            testdict["pages"] = int(len(res)/testdict["step"])+1
+        print(len(res))
+        return render_template('test.html',testdict=testdict)
     else:
-        testdict["pages"] = int(len(res)/testdict["step"])+1
-    print(len(res))
-    return render_template('test.html',testdict=testdict)
+        res = Product.fetchall()
+        testdict = {
+            "name": 'ddd',
+            "colnames": Product.colnames(),
+            "step": 5,
+            "data": res,
+        }
+        if len(res) % testdict["step"] == 0:
+            testdict["pages"] = int(len(res) / testdict["step"])
+        else:
+            testdict["pages"] = int(len(res) / testdict["step"]) + 1
+        print(request.form.to_dict())
+        return render_template('datapage.html', testdict=testdict)
 @app.route("/test01",methods=['GET','POST'])
 def test01():
     print(request.method)
     if request.method =='GET':
-        return func.e
+        return 'aa'
     elif request.method =='POST':
         print(request.data)
         return 'test_list'

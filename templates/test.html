@@ -4,11 +4,10 @@
 {% import 'listmacro.html'as lists %}
 {% block title %}测试页{%endblock%}
 {% block left -%}
-    {{5%3}}
 {%- endblock %}
 {% block pagearea -%}
 {# 功能框 #}
-    <form id="fliter" class="floatleft" action="fliter"><input type="submit" class="btn btn-primary btn-sm" value="过滤"></input></form>
+    {{lists.fliter("bt")}}
     {% if testdict -%}
         {{lists.table(testdict)}}
 	{%- endif %}

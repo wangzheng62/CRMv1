@@ -5,7 +5,7 @@ function f1(event) {
 function f2() {
     var t=$(event.target).text();
     var n=$(event.target).attr("name");
-    str=" "+"<input type='text' name="+n+"class='form-text' placeholder="+t+">";
+    str=" "+"<input type='text' name="+n+" class='form-text' placeholder="+t+">";
     $("#fliter").append(str);
 
 
@@ -40,6 +40,14 @@ function selectall() {
     $("td:visible").parent().toggleClass('info');
     
 }
+function fliter() {
+    var d=$("form").serialize();
+    $.post('test',d,function (data) {
+        $("#tablearea").html(data);
+
+    })
+
+}
 $(document).ready(function () {
 
     $("body").on("dblclick","td",f1);
@@ -49,5 +57,5 @@ $(document).ready(function () {
     $("body").on("dblclick",":text",f4);
     $("body").on("click","li",page);
     $("body").on("click",":checkbox",selectall);
-
+    $("body").on("click","#bt",fliter);
 })
