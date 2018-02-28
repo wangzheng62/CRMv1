@@ -1,5 +1,5 @@
 from flask import Flask, redirect, url_for, render_template, request, flash
-from func import DBserver, Crm, Product, Orderlist, Employee, Customer
+from func import DBserver, Crm, Product, Orderlist, Employee, Customer,Colnamesmap
 from flask_login import LoginManager, login_user, login_required, logout_user
 import func,time
 app = Flask(__name__)
@@ -11,11 +11,21 @@ login_manager.init_app(app)
 def test():
     if request.method =='GET':
         res = Product.fetchall()
-        testdict={
-        "name":'ddd',
-        "colnames":Product.colnames(),
-        "step":2,
-        "data":res,
+        colnames = Product.colnames()
+        chinese = []
+        for name in colnames:
+            aa = Colnamesmap(colname=name)
+            chinese.append(aa.search()[0][2])
+        cc = list(zip(colnames, chinese))
+        print(colnames)
+        print(chinese)
+        print(cc)
+
+        testdict = {
+            "name": 'ddd',
+            "colnames": cc,
+            "step": 5,
+            "data": res,
         }
         if len(res)%testdict["step"]==0:
             testdict["pages"]=int(len(res)/testdict["step"])
@@ -25,9 +35,15 @@ def test():
         return render_template('test.html',testdict=testdict)
     else:
         res = Product.fetchall()
+        colnames=Product.colnames()
+        chinese=[]
+        for name in colnames:
+            aa=Colnamesmap(colname=name)
+            chinese.append(aa.search()[0][2])
+        cc=zip(colnames,chinese)
         testdict = {
             "name": 'ddd',
-            "colnames": Product.colnames(),
+            "colnames": cc,
             "step": 5,
             "data": res,
         }
@@ -50,7 +66,7 @@ def test01():
 @login_manager.user_loader
 def load_user(user_id):
     print(user_id)
-    return Employee(user_Id=user_id)
+    return Employee(user_id=user_id)
 
 
 @app.route('/')
@@ -61,9 +77,7 @@ def root():
 @app.route('/login', methods=['get', 'post'])
 def login():
     kw = request.form.to_dict()
-    e = Employee(user_Id=kw['name'])
-    print(e.count())
-    print(e.search()[0][9])
+    e = Employee(user_id=kw['name'])
     if e.count() == 1 and kw['pw']==e.search()[0][9]:
         print('1')
         login_user(e)

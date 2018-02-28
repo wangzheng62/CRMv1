@@ -39,6 +39,9 @@ class Product(MysqlTable, Crm):
 class Customer(MysqlTable, Crm):
     pass
 
+class Colnamesmap(MysqlTable,Crm):
+    pass
+
 e='''
       <div class="col-sm-2">
         <input type="text" class="form-control" list="test_list"><input type="number" class="form-control" aria-label="...">

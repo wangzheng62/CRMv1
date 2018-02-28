@@ -41,7 +41,7 @@
         <tr>
             <th><input type="checkbox"/></th>
             {% for col in dict.colnames -%}
-                <th>{{col}}</th>
+                <th name="{{col[0]}}">{{col[1]}}</th>
             {%- endfor %}
         </tr>
         {%- endif %}
