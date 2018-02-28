@@ -4,7 +4,7 @@
 {%- endmacro %}
 {#  dict{
         "name":'',
-        "colnames":[],
+        "colnames":[(),()],
         "step":0,
         "pages":0,
         "data":[(),()]
@@ -33,7 +33,7 @@
         <tr>
             <th><input type="checkbox"/></th>
             {% for col in dict.colnames -%}
-                <th name="{{col}}">{{col}}</th>
+                <th name="{{col[0]}}">{{col[1]}}</th>
             {%- endfor %}
         </tr>
         {% elif loop.index%dict.step==1 and loop.index!=1 -%}
@@ -51,7 +51,7 @@
                 <td>{{td}}</td>
             {%- endfor %}
         </tr>
-        {% if ((loop.index+1)%dict.step==1 and not loop.first) or loop.last -%}
+        {% if ((loop.index + 1)%dict.step==1 and not loop.first) or loop.last -%}
         </table>
         {%- endif %}
     {%- endfor %}
