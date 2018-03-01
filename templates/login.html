@@ -33,7 +33,7 @@
         {% block pagearea %}{% endblock %}
     </div>
 	<div id="right" class="col-lg-2 col-md-2 col-sm-2">
-        {% block right %}{% endblock %}
+        {% block right %}<div style="opacity:0.5;display:block;top:0px;left:0px;background-color:red;position:fixed;width: 100%;height: 100%;"></div>{% endblock %}
     {% with messages = get_flashed_messages() %}
          {% if messages %}
             {% for message in messages %}

@@ -1,6 +1,7 @@
 function f1(event) {
     var t=$(event.target.parentNode)
- alert(t.children().first().text())
+    $("#bgmain").removeClass("invisible");
+    $(".active").removeClass('active');
 }
 function f2() {
     var t=$(event.target).text();
@@ -48,6 +49,11 @@ function fliter() {
     })
 
 }
+function rm() {
+
+    $("#bgmain").addClass("invisible");
+
+}
 $(document).ready(function () {
 
     $("body").on("dblclick","td",f1);
@@ -58,4 +64,5 @@ $(document).ready(function () {
     $("body").on("click","li",page);
     $("body").on("click",":checkbox",selectall);
     $("body").on("click","#bt",fliter);
+    $("body").on("click","#bgmain",rm);
 })

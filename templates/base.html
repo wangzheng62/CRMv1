@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
 	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/mytable.css" />
 	<script src="/static/js/jquery-3.2.1.js"></script>
     <script src="/static/js/bootstrap.js"></script>
     <script src="/static/js/echarts.js"></script>
+    <script src="/static/js/mytable.js"></script>
     {% block link %}{% endblock %}
     {% block script %}{% endblock %}
 </head>
 <body>
-<nav id="top" class="navbar navbar-inverse">
+<nav id="top" class="navbar navbar-inverse height17">
     <div class="container-fluid">
     <div class="navbar-header">
         {% block top %}{% endblock %}
