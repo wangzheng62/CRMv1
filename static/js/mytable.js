@@ -1,7 +1,21 @@
 function f1(event) {
     var t=$(event.target.parentNode)
     $("#bgmain").removeClass("invisible");
+    $(".active").addClass('mark');
     $(".active").removeClass('active');
+    var td1=$(event.target.parentNode).children("td:gt(1)");
+    var th1=$("tr:first").children(":gt(1)");
+    var i=0,len=th1.length,str="<form class='form-group'>";
+    for (;i<len;i++)
+    {
+        nm=th1[i].getAttribute('name')
+        s1="<label for="+nm+"class='control-label'>"+nm+":</label>"
+        s2="<input type='text' class='form-control' name="+nm+" value="+td1[i].innerHTML+">"
+        str=str+s1+s2
+    }
+    alert(1);
+    str=str+"<input type='submit' value='修改'>"+"</form>"
+    $("#formarea").html(str);
 }
 function f2() {
     var t=$(event.target).text();
@@ -49,9 +63,12 @@ function fliter() {
     })
 
 }
-function rm() {
+function rm(event) {
 
     $("#bgmain").addClass("invisible");
+    $(".mark").addClass("active");
+    $(".mark").removeClass("mark");
+
 
 }
 $(document).ready(function () {
@@ -64,5 +81,5 @@ $(document).ready(function () {
     $("body").on("click","li",page);
     $("body").on("click",":checkbox",selectall);
     $("body").on("click","#bt",fliter);
-    $("body").on("click","#bgmain",rm);
+    $("body").on("click",".bg",rm);
 })

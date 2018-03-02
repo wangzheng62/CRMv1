@@ -35,6 +35,9 @@
 .bg{
     background: rgba(130,130,130,0.5);
 }
+.bgyellow{
+    background: rgba(255,255,0,0.5);
+}
 .height16{
     height: 16%;
 }

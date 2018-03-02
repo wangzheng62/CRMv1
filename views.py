@@ -182,7 +182,12 @@ def productsearch():
 @app.route('/productadd')
 def productadd():
     res = Product.desc()
-    return render_template('productmain.html', productform=res, bindurl='addproduct')
+    d = {
+        "name": '',
+        "url": 'addproduct',
+        "desc": res,
+    }
+    return render_template('productmain.html', productform=d)
 
 
 @app.route('/productanalyze')
