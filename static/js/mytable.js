@@ -77,7 +77,7 @@ $(document).ready(function () {
     $("body").on("click","td",selected);
     $("body").on("dblclick","th:gt(0)",f2);
     $("body").on("change",":text",f3);
-    $("body").on("dblclick",":text",f4);
+    $("body").on("dblclick","#fliter:text",f4);
     $("body").on("click","li",page);
     $("body").on("click",":checkbox",selectall);
     $("body").on("click","#bt",fliter);

@@ -182,6 +182,8 @@ def productsearch():
 @app.route('/productadd')
 def productadd():
     res = Product.desc()
+    ee = Colnamesmap.desc()
+    print(ee)
     d = {
         "name": '',
         "url": 'addproduct',
