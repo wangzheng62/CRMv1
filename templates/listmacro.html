@@ -1,7 +1,23 @@
 
-{% macro fliter(id) -%}
-    <button id={{id}} class="btn btn-primary btn-sm floatleft">过滤</button><form id="fliter" class="floatleft">:</form>
-{%- endmacro %}
+{% macro fliter(id) %}
+    <button id={{id}} class="btn btn-primary btn-sm floatleft">批量修改</button>
+    <button id={{id}} class="btn btn-primary btn-sm floatleft">删除</button>
+    <button id={{id}} class="btn btn-primary btn-sm floatleft">过滤</button>
+    <form id="fliter" class="floatleft">:</form>
+{% endmacro %}
+{% macro popform() %}
+    <div id="bgmain" class="bgmain invisible">
+
+        <div class="col-lg-12 col-md-12 col-xs-12 bg height16"></div>
+        <div class="col-lg-2 col-md-2 col-xs-2 bg height80"></div>
+        <div class="col-lg-8 col-md-8 col-xs-8 height80">
+            <div id="formarea" class="col-lg-12 col-md-12 col-xs-12 centerform"></div>
+            <div class="col-lg-12 col-md-12 col-xs-12 bg height16"></div>
+        </div>
+        <div class="col-lg-2 col-md-2 col-xs-2 bg height80"></div>
+
+    </div>
+{% endmacro %}
 {#  dict={
         "name":'',
         "colnames":[(),()],
