@@ -1,6 +1,7 @@
 <application>
   <component name="FileTypeManager" version="17">
     <extensionMap>
+      <mapping pattern="user" type="JSON" />
       <mapping pattern="数据库设计" type="SQL" />
     </extensionMap>
   </component>
