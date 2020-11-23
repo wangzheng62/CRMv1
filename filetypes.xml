@@ -2,6 +2,7 @@
   <component name="FileTypeManager" version="17">
     <extensionMap>
       <mapping pattern="user" type="JSON" />
+      <mapping pattern="test" type="PLAIN_TEXT" />
       <mapping pattern="table" type="PLAIN_TEXT" />
       <mapping pattern="数据库设计" type="SQL" />
     </extensionMap>
