@@ -4,6 +4,7 @@
       <mapping pattern="user" type="JSON" />
       <mapping pattern="test" type="PLAIN_TEXT" />
       <mapping pattern="table" type="PLAIN_TEXT" />
+      <mapping pattern="1" type="PLAIN_TEXT" />
       <mapping pattern="数据库设计" type="SQL" />
     </extensionMap>
   </component>
